@@ -1,0 +1,25 @@
+<div class="container w-xxl w-auto-xs" ng-controller="SessionsCtrl">
+  <a href class="navbar-brand block m-t">SEI CRM</a>
+  <div class="m-b-lg">
+    <div class="wrapper text-center">
+      <strong ng-hide="form.errors.length > 0">Введите данные для входа</strong>
+      <strong ng-show="form.errors.length > 0" style="color: #d9534f">{{ form.errors[0] }}</strong>
+    </div>
+    <form name="signin" class="form-validation" ng-submit="login(credentials)">
+      <div class="list-group list-group-sm" ng-class="{loginError: form.errors.length > 0}">
+        <div class="list-group-item">
+          <input type="email" placeholder="Email" class="form-control no-border" ng-model="credentials.email">
+        </div>
+        <div class="list-group-item">
+           <input type="password" placeholder="Пароль" class="form-control no-border" ng-model="credentials.password">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Войти</button>
+      <div class="text-center m-t m-b"><a ui-sref="access.forgotpwd">Забыли пароль?</a></div>
+      <div class="line line-dashed"></div>
+      <p class="text-center"><small>Еще не зарегистрированы?</small></p>
+      <a ui-sref="access.signup" class="btn btn-lg btn-default btn-block">Регистрация</a>
+    </form>
+  </div>
+  <div class="text-center" ng-include="'../templates/blocks/page_footer.html'"></div>
+</div>

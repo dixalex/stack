@@ -1,0 +1,79 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm fade-in-right" ui-view>
+  <!--<div>-->
+  <!-- .aside -->
+  <div class="col w w-auto-xs bg-light inherit dk b-r">
+    <div class="wrapper-md b-b">
+      <a class="btn btn-link pull-right m-t-n-xs m-r-n-sm visible-sm visible-xs" ui-toggle-class="show" data-target="#nav-docs">
+        <i class="fa fa-bars"></i>
+      </a>
+      <span class="h4">Фильтр</span>
+    </div>
+    <div class="hidden-sm hidden-xs" id="nav-docs">
+      <ul class="nav nav-md">
+        <li>
+          <div class="m-b-sm padder">
+            <div class="btn-group" ng-init="radioModel = 'all'; showAll = true; showIt = false">
+              <label ng-click="showAll = true" class="btn btn-sm btn-info ng-valid ng-dirty active" ng-model="radioModel" btn-radio="'all'"><i class="fa fa-check text-active"></i> Все</label>
+              <label ng-click="showIt = true; showAll = false" class="btn btn-sm btn-success ng-valid ng-dirty" ng-model="radioModel" btn-radio="'person'"><i class="fa fa-check text-active"></i> Физ.</label>
+              <label ng-click="showIt = false; showAll = false" class="btn btn-sm btn-primary ng-valid ng-dirty" ng-model="radioModel" btn-radio="'company'"><i class="fa fa-check text-active"></i> Юр.</label>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /.aside -->
+  <div class="col">
+    <div class="bg-light lter b-b wrapper-md hidden-print">
+      <a ui-sref="app.clients.details({ id: 'new' })" class="btn m-b-xs btn-sm btn-primary btn-addon pull-right"><i class="fa fa-plus"></i>добавить клиента</a>
+      <h1 class="m-n font-thin h3 text-black">Клиенты</h1>
+    </div>
+
+    <div class="clearfix wrapper">
+      <div class="panel panel-default">
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th style="width:20px;">
+                </th>
+                <th>Наименование</th>
+                <th>Телефон</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="client in clients" ng-show="showAll || showIt === client.person">
+                <td><i ng-class="{'fa fa-user': client.person, 'fa fa-building-o': !client.person }"></i></td>
+                <td><a ui-sref="app.clients.details({ id: {{client.id}} })">{{ client.name }}</a></td>
+                <td>{{client.phone_numbers[0].number}}</td>
+                <td><span class="label bg-light">Без сделок</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+          <div class="row">
+            <div class="col-sm-6 hidden-xs">
+              <small class="text-muted inline m-t-sm m-b-sm">Показано {{clients.length}} из {{clients.length}} записей</small>
+            </div>
+            <div class="col-sm-6 text-right text-center-xs">
+              <ul class="pagination pagination-sm m-t-none m-b-none">
+                <li><a href><i class="fa fa-chevron-left"></i></a></li>
+                <li><a href>1</a></li>
+                <li><a href>2</a></li>
+                <li><a href>3</a></li>
+                <li><a href>4</a></li>
+                <li><a href>5</a></li>
+                <li><a href><i class="fa fa-chevron-right"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+
+  </div>
+  <!--</div>-->
+</div>

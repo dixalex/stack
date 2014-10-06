@@ -1,0 +1,35 @@
+<div>
+  <div class="bg-light lter b-b wrapper-md hidden-print">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <!-- modal -->
+    <script type="text/ng-template" id="ModalContent.html">
+      <div ng-include="'../templates/modal-confirmation.html'"></div>
+    </script>
+    <!-- /modal -->
+    <div class="btn-toolbar">
+      <a href class="btn btn-sm btn-primary pull-right" ng-click="saveInsuranceType($state.params.id)" ng-class="{'disabled' : editableInsuranceType.$pristine}">Сохранить<span class="hidden-xs" ng-hide="$state.params.id === 'new'"> изменения</span></a>
+      <a href class="btn btn-sm btn-danger pull-right" ng-hide="$state.params.id == 'new'" ng-click="deleteInsuranceType()"><i class="fa fa-trash-o"></i></a>
+      <h1 class="m-n font-thin h3">
+        <a ng-click="$state.go('^')" class="pull-left m-r-md m-t-xxs"><i class="fa fa-chevron-left"></i></a>
+        {{ insurance_type.name ? insurance_type.name : 'Новый вид' }}
+      </h1>
+
+    </div>
+  </div>
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-md-4">
+        <form name="editableInsuranceType">
+          <dl class="dl-horizontal editable-input">
+              <dt>Название:</dt>
+              <dd><edit-in-place value="insurance_type.name"></edit-in-place></dd>
+          </dl>
+        </form>
+        <!-- / details -->
+
+      </div>
+    </div>
+  </div>
+</div>

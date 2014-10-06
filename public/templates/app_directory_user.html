@@ -1,0 +1,65 @@
+<div class="bg-light lter b-b wrapper-md hidden-print">
+
+  <!-- toaster directive -->
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <!-- / toaster directive -->
+
+  <!-- modal -->
+  <script type="text/ng-template" id="ModalContent.html">
+    <div ng-include="'../templates/modal-confirmation.html'"></div>
+  </script>
+  <!-- /modal -->
+
+  <div class="btn-toolbar">
+    <a href class="btn btn-sm btn-primary pull-right" ng-click="saveUser($state.params.id); saving = true" ng-class="{'disabled' : editableUser.$pristine}">Сохранить<span class="hidden-xs" ng-hide="$state.params.id === 'new'"> изменения</span></a>
+    <a href class="btn btn-sm btn-danger pull-right" ng-hide="$state.params.id == 'new'" ng-click="deleteUser()"><i class="fa fa-trash-o"></i></a>
+    <h1 class="m-n font-thin h3">
+      <a ng-click="$state.go('^')" class="pull-left m-r-md m-t-xxs"><i class="fa fa-chevron-left"></i></a>
+      {{ user.name ? user.name : 'Новый менеджер' }}
+    </h1>
+
+  </div>
+</div>
+<div class="wrapper-md">
+  <div class="row">
+    <div class="col-md-4">
+      <form name="editableUser">
+        <dl class="dl-horizontal editable-input">
+            <dt>Статус:</dt>
+            <dd>
+              <button type="button" class="btn btn-xs" ng-model="user.disabled" btn-checkbox ng-class="{'btn-danger': user.disabled, 'btn-success': !user.disabled}">
+                <i class="fa fa-check text"></i>
+                  <span class="text">Активный</span>
+                <i class="fa fa-times-circle text-active"></i>
+                  <span class="text-active">Заблокирован</span>
+              </button>
+            </dd>
+            <dt>ФИО:</dt>
+            <dd><edit-in-place value="user.name"></edit-in-place></dd>
+            <dt>Email:</dt>
+            <dd><edit-in-place value="user.email"></edit-in-place></dd>
+            <dt>Пароль:</dt>
+            <dd><edit-in-place value="user.password"></edit-in-place></dd>
+            <dt>Телефон:</dt>
+            <dd><edit-in-place value="user.phone"></edit-in-place></dd>
+            <dt>Роль:</dt>
+            <dd>
+              <select ui-module="select2" ui-select2 ng-model="user.role" class="form-control editable">
+                <option value=""></option>
+                <option ng-repeat="role in roles" value="{{role}}">{{role}}</option>
+              </select>
+            </dd>
+            <dt>Должность:</dt>
+            <dd><edit-in-place value="user.position"></edit-in-place></dd>
+            <dt>Заметки:</dt>
+            <dd><edit-in-place data-text-area="" value="user.notes"></edit-in-place></dd>
+        </dl>
+      </form>
+      <!-- / details -->
+    </div>
+    <div class="col-md-8">
+      Операции
+    </div>
+  </div>
+</div>
+

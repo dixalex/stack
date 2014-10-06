@@ -1,0 +1,113 @@
+<div>
+  <div class="bg-light lter b-b wrapper-md hidden-print">
+    <!-- toaster directive -->
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <!-- / toaster directive -->
+    <!-- modal -->
+    <script type="text/ng-template" id="ModalContent.html">
+      <div ng-include="'../templates/modal-confirmation.html'"></div>
+    </script>
+    <!-- /modal -->
+    <div class="btn-toolbar">
+      <a href class="btn btn-sm btn-primary pull-right" ng-click="saveClient($state.params.id)" ng-class="{'disabled' : editableClient.$pristine}">Сохранить<span class="hidden-xs" ng-hide="$state.params.id === 'new'"> изменения</span></a>
+      <a href class="btn btn-sm btn-danger pull-right" ng-hide="$state.params.id == 'new'" ng-click="deleteClient()"><i class="fa fa-trash-o"></i></a>
+      <h1 class="m-n font-thin h3">
+        <a ng-click="$state.go('^')" class="pull-left m-r-md m-t-xxs"><i class="fa fa-chevron-left"></i></a>
+        {{ client.name ? client.name : 'Новый клиент'}}
+      </h1>
+
+    </div>
+  </div>
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-md-4">
+        <form name="editableClient">
+          <dl class="dl-horizontal editable-input">
+              <dd>
+                <a ng-model="client.person" btn-checkbox btn-checkbox-true="true" btn-checkbox-false="false">
+                  <span ng-show="client.person">
+                    <i class="fa fa-user font-14"></i> Физ.лицо
+                  </span>
+                  <span ng-hide="client.person">
+                    <i class="fa fa-building-o font-14"></i> Юр.лицо
+                  </span>
+                </a>
+              </dd>
+              <dt><span ng-show="client.person">ФИО:</span><span ng-hide="client.person">Название:</span></dt>
+              <dd><edit-in-place value="client.name"></edit-in-place></dd>
+              <dt ng-show="!client.person">Имя к. л.:</dt>
+              <dd ng-show="!client.person"><edit-in-place value="client.contact"></edit-in-place></dd>
+              <dt>НН:</dt>
+              <dd><edit-in-place value="client.inn"></edit-in-place></dd>
+              <dt>Менеджер:</dt>
+              <dd>
+                <select ui-module="select2" ui-select2 ng-model="client.user_id" class="form-control editable">
+                  <option value=""></option>
+                  <option ng-repeat="user in users" value="{{user.id}}">{{user.name}}</option>
+                </select>
+              </dd>
+              <dt ng-repeat-start="phone_number in client.phone_numbers">
+                  Телефон <span ng-hide="client.phone_numbers.length == 1">{{$index+1}}</span>:
+              </dt>
+              <dd ng-repeat-end>
+                <edit-in-place focus-on ng-class="{ 'active' : addNumberFocus && $index+1 == client.phone_numbers_attributes.length }" value="phone_number.number"></edit-in-place>
+              </dd>
+              <dd ng-hide="client.phone_numbers_attributes[client.phone_numbers_attributes.length-1].number == '' && client.phone_numbers.length > 0">
+                <a href ng-click="addNumber()"><small class="add-item">добавить телефон</small></a>
+              </dd>
+              <dt ng-repeat-start="email_address in client.email_addresses">
+                Email <span ng-hide="client.email_addresses.length == 1">{{$index+1}}</span>:
+              </dt>
+              <dd ng-repeat-end>
+                <edit-in-place focus-on ng-class="{ 'active' : addEmailFocus && $index+1 == client.email_addresses_attributes.length }" value="email_address.email"></edit-in-place>
+              </dd>
+              <dd ng-hide="client.email_addresses_attributes[client.email_addresses_attributes.length-1].email == '' && client.email_addresses.length > 0">
+                <a href ng-click="addEmail()"><small class="add-item">добавить email</small></a>
+              </dd>
+              <dt>День рожд.:</dt>
+              <dd class="visible-overflow" ng-controller="DatepickerCtrl">
+                <input datepicker-localdate="client.birthday" ng-readonly="opened" ng-class="{'editable-date-open' : opened}" ng-click="open($event)" type="text" class="editable-date" datepicker-popup="{{format}}" ng-model="client.birthday" is-open="opened" datepicker-options="dateOptions" current-text="Сегодня" clear-text="Очистить" close-text="Закрыть" />
+              </dd>
+              <dt>Паспорт:</dt>
+              <dd ng-attr-title="{{client.passport}}">
+                <edit-in-place value="client.passport"></edit-in-place>
+              </dd>
+              <dt>Адрес:</dt>
+              <dd ng-attr-title="{{client.address}}">
+                <edit-in-place value="client.address"></edit-in-place>
+              </dd>
+              <dt>Источник:</dt>
+              <dd></dd>
+              <dt>Заметки:</dt>
+              <dd>
+                <edit-in-place data-text-area="" value="client.notes"></edit-in-place>
+              </dd>
+          </dl>
+        </form>
+        <!-- / details -->
+
+        <!-- contracts if any -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <ul class="nav nav-pills pull-right">
+              <li><a href>новый договор</a></li>
+            </ul>
+            Договора
+          </div>
+          <table class="table">
+            <tr>
+              <td><a href>CA-2333244</a></td>
+              <td><a href>10.08.2014</a></td>
+            </tr>
+          </table>
+        </div>
+        <!-- no contracts -->
+        <!--<a href class="btn m-b-xs btn-sm btn-default btn-addon m-l-xl"><i class="fa fa-plus"></i>добавить договор</a>-->
+        <!-- / contracts -->
+      </div>
+      <div class="col-md-8">
+        Сделки и история
+      </div>
+    </div>
+  </div>
+</div>
