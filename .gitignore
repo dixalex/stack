@@ -30,3 +30,4 @@ pickle-email-*.html
 /vendor/assets/bower_components
 *.bowerrc
 bower.json
+config/secrets.yml

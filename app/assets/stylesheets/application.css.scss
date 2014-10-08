@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+#banner {
+    margin-top: 0;
+}
+.top-padding {
+    padding-top: 10px;
+}
+h1 .btn-default:hover {
+    background-color: #df691a;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 10.5px;
+}
+a.title {
+    color: #EBEBEB;
+}
+.details {
+    font-size: 75%;
+}
+.question-body {
+    font-size: 13px;
+}

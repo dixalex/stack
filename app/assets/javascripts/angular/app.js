@@ -41,16 +41,22 @@ var app = angular.module('app', [
         app.value      = $provide.value;
 
         $urlRouterProvider
-          .otherwise('');
+          .otherwise('/questions');
         $stateProvider
           .state('app', {
             abstract: true,
             url: '/app',
             templateUrl: '../templates/app.html'
           })
-          .state('app.dashboard', {
-            url: '^/dashboard',
-            templateUrl: '../templates/app_dashboard.html'
+          .state('app.questions', {
+            url: '^/questions',
+            controller: 'QuestionsCtrl',
+            templateUrl: '../templates/questions.html'
+          }).state('app.questions.details', {
+            controller: 'QuestionsDetailsCtrl',
+            url: '/:id',
+            templateUrl: '../templates/questions_details.html',
+            parent: 'app.questions'
           })
       }
     ]

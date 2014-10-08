@@ -6,7 +6,12 @@ gem 'rails', '4.1.6'
 
 gem 'thin', group: :development
 gem 'mongoid', '~> 4.0.0'
+gem 'bson_ext'
 gem 'quiet_assets'
+gem 'russian'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'font-awesome-sass'
 
 
 # Use SCSS for stylesheets

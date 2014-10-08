@@ -1,16 +1,10 @@
 <!-- navbar -->
-<div data-ng-include=" '../templates/blocks/header.html' " class="app-header navbar">
+<div data-ng-include=" '../templates/header.html' " class="navbar navbar-default">
 </div>
 <!-- / navbar -->
 
 
 <!-- content -->
-<div class="app-content">
-  <div ui-butterbar></div>
-  <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
-  <div class="app-content-body fade-in-up app-content-full" ui-view></div>
+<div class="app-content" ui-view>
 </div>
 <!-- /content -->
-
-<!-- debug state -->
-<div style="position: fixed; bottom: 0; display: none;">{{ $state }}</div>

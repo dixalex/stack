@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-10 col-md-8 col-sm-6">
+        <h1>Stack.ck.ua</h1>
+      </div>
+      <div class="col-lg-2 col-md-4 col-sm-6">
+        <div class="sponsor">
+          <h1>
+            <a href="#" class="btn btn-default btn-block">Запитати</a>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+    <div ui-view>
+      <div class="row" ng-repeat="question in questions">
+        <div class="col-md-12">
+
+          <h4><a class="title" href="#/questions/{{question._id}}">{{ question.title }}</a></h4>
+
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-md-3">
+                <!--<span class="label label-primary">Ruby on Rails</span>-->
+                <small>
+                  Відповідей: <span class="badge">9</span>
+                </small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

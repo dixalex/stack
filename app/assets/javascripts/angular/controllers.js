@@ -10,6 +10,10 @@ angular.module('app.controllers', ['ngCookies'])
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
+      $http.get('/session.json').success(function(data) {
+        $scope.currentUser = data.currentUser;
+      });
+
       // config
       $scope.app = {
         name: 'Stack',
@@ -20,6 +24,19 @@ angular.module('app.controllers', ['ngCookies'])
       };
 
 
+      $scope.authNetwork = function authNetwork(network) {
+        $('.authNetwork').replaceWith('<a href="#" >Знов чекаємо на GitHub ;( <i class="fa fa-cog fa-spin"></i></a>');
+        var openUrl = '/auth/' + network;
+        window.$windowScope = $scope;
+        window.open(openUrl, "_self", "Authenticate Account", "width=500, height=500");
+      };
+
+      $scope.logout = function logout() {
+        $http.get('/logout').
+          success(function(data) {
+            $scope.currentUser = null;
+          });
+      };
 
       function isSmartDevice( $window )
       {
@@ -28,5 +45,4 @@ angular.module('app.controllers', ['ngCookies'])
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
-
   }]);
