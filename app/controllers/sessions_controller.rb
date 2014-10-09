@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def show
-    render json: {currentUser: current_user}
+    render json: {currentUser: current_user, authenticity_token: form_authenticity_token}
   end
 
   def destroy

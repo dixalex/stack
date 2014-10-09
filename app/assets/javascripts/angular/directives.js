@@ -270,6 +270,8 @@ angular.module('app.directives', ['ui.load'])
     }
   }])
 
+  .directive('textAngular', ['textAngular'])
+
   .directive('focus', ['$timeout', function($timeout) {
     return {
       restrict: 'A',

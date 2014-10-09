@@ -12,6 +12,7 @@ angular.module('app.controllers', ['ngCookies'])
 
       $http.get('/session.json').success(function(data) {
         $scope.currentUser = data.currentUser;
+        $scope.authenticity_token = data.authenticity_token;
       });
 
       // config

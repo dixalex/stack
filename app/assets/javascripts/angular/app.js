@@ -52,10 +52,15 @@ var app = angular.module('app', [
             url: '^/questions',
             controller: 'QuestionsCtrl',
             templateUrl: '../templates/questions.html'
+          }).state('app.questions.new', {
+            controller: 'NewQuestionCtrl',
+            url: '/new',
+            templateUrl: '../templates/new_question.html',
+            parent: 'app.questions'
           }).state('app.questions.details', {
-            controller: 'QuestionsDetailsCtrl',
+            controller: 'QuestionDetailsCtrl',
             url: '/:id',
-            templateUrl: '../templates/questions_details.html',
+            templateUrl: '../templates/question_details.html',
             parent: 'app.questions'
           })
       }

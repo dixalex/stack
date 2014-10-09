@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+
+    <form class="form-horizontal" ng-submit="createQuestion(credentials)">
+    <input ng-model="credentials.authenticity_token" name="authenticity_token" type="hidden">
+      <fieldset>
+        <div class="form-group">
+          <label for="title" class="col-md-2 control-label" id="title-label">Заголовок</label>
+          <div class="col-lg-10">
+            <input ng-model="credentials.title" type="text" class="form-control" id="title" placeholder="Заголовок, що розкриває суть питання">
+            <!--TODO:  ljgbcfnb-->
+            <!--<span class="help-block">Обов`язково пишіть заголовок, що розкриває суть питання. В деталях зазначте всі подробиці проблеми. Чим більше деталей ви розкриєте, тим більше шансів, що вам допоможуть.</span>-->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="body" class="col-md-2 control-label" id="body-label">Детально</label>
+          <div class="col-lg-10">
+            <textarea ng-model="credentials.body" class="form-control" rows="10" id="body"></textarea>
+            <span class="help-block"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit" class="btn btn-primary">Відправити</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+
+  </div>
+</div>
+
+
+
