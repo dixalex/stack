@@ -6,6 +6,8 @@ ruby '2.1.3'
 gem 'rails', '4.1.6'
 
 gem 'thin', group: :development
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+# bin/rake heroku:secrets RAILS_ENV=production
 gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
 gem 'quiet_assets'
