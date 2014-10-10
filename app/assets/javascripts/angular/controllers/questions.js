@@ -32,7 +32,7 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.createQuestion = function(credentials) {
     $http.post('/questions', credentials).
       success(function(data) {
-//        $state.go('/:id', {id: data.question._id});
+        $scope.fetchQuestions();
         $state.go('app.questions.details', {id: data.question._id});
       }).error(function(data) {
         // form errors
