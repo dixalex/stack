@@ -20,7 +20,28 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.question = data.question;
     $scope.question.created_at_from_now = moment($scope.question.created_at).fromNow();
     console.log($scope.question);
+
+    $scope.addAnswer = function(credentials) {
+      $http.post('/questions/'+$scope.question._id+'/answers', credentials).
+        success(function(data) {
+          $('.answer-form-row').hide();
+          $scope.question.answers.push(data.answer);
+          console.log($scope.question.answers);
+
+        }).error(function(data) {
+          // form errors
+          $('.has-error').remove();
+          $.each(data.errors, function(index, value) {
+            $('#'+index+'-label').append('<div class="has-error"><label class="control-label" for="inputError">'+value+'</label></div>');
+          });
+        });
+    };
+
   });
+  $scope.credentials = {
+    body: '',
+    authenticity_token: $scope.authenticity_token
+  }
 }]).controller('NewQuestionCtrl', ['$scope', '$http', '$state', 'toaster', function($scope, $http, $state, toaster) {
   // validate current user
   if (!$scope.currentUser) {
@@ -29,10 +50,10 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
   $scope.credentials = {
-  question: {
-    title: '',
-    body: '' },
-  authenticity_token: $scope.authenticity_token
+    question: {
+      title: '',
+      body: '' },
+    authenticity_token: $scope.authenticity_token
   };
   $scope.createQuestion = function(credentials) {
     $http.post('/questions', credentials).

@@ -8,6 +8,7 @@ class User
   validates_presence_of :name
 
   has_many :questions
+  has_many :answers
 
   def self.create_with_omniauth(auth)
     create! do |user|

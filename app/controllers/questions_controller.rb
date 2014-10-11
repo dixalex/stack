@@ -8,7 +8,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     render json: { question: @question.as_json( include:
-                                                    { user: { only: [:name] }
+                                                    { user: { only: [:name] },
+                                                      answers: { only: [:body, :accepted, :created_at]}
                                                     } ) }
     @question.update_attributes( views: @question.views + 1 )
   end

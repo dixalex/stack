@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#index'
 
-  resources :questions
+  resources :questions do
+    resources :answers
+  end
 
   get '/session' => 'sessions#show'
   get '/logout' => 'sessions#destroy'
