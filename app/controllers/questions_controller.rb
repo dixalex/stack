@@ -1,7 +1,7 @@
 # coding: utf-8
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all.reverse
+    @questions = Question.asc(:created_at).reverse
     render json: {questions: @questions}
   end
 
@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
     render json: { question: @question.as_json( include:
                                                     { user: { only: [:name] }
                                                     } ) }
+    @question.update_attributes( views: @question.views + 1 )
   end
 
   def create

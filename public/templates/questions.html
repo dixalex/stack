@@ -20,17 +20,14 @@
 
           <h4><a class="title" href="#/questions/{{question._id}}">{{ question.title }}</a></h4>
 
-          <div class="well well-sm">
-            <div class="row">
-              <div class="col-md-3">
-                <!--<span class="label label-primary">Ruby on Rails</span>-->
-                <small>
-                  Відповідей: <span class="badge">9</span>
-                </small>
+          <div class="row top-padding">
+            <div class="col-md-12">
+              <div class="well well-sm">
+                <small>{{ question.created_at_from_now }} | {{ question.views }} переглядів</small>
               </div>
-
             </div>
           </div>
+
         </div>
       </div>
     </div>

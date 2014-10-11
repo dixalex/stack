@@ -8,6 +8,10 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
   $scope.fetchQuestions = function() {
     $http.get('/questions.json').success(function(data) {
       $scope.questions = data.questions;
+      // create created_at_from_now for each question and push it back to object
+      angular.forEach($scope.questions, function(obj) {
+        obj['created_at_from_now'] = moment(obj.created_at).fromNow();
+      });
     });
   };
   $scope.fetchQuestions();
