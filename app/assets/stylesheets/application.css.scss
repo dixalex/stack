@@ -45,14 +45,22 @@ a.title {
   background-repeat: no-repeat;
   width: 40px;
   margin-left: 0;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
-.navbar > .container .navbar-brand:hover {
+.navbar > .container .navbar-brand:hover, .navbar > .container .navbar-brand.index-page {
   background-image: image-url("stack_logo_big.png");
   background-size: 152px 40px;
   width: 152px;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.navbar-form {
+  padding-left: 0;
 }

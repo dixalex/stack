@@ -14,6 +14,7 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
 }]).controller('QuestionDetailsCtrl', ['$scope', '$http', '$state', function($scope, $http, $state) {
   $http.get('/questions/'+ $state.params.id +'.json').success(function(data) {
     $scope.question = data.question;
+    $scope.question.created_at_from_now = moment($scope.question.created_at).fromNow();
     console.log($scope.question);
   });
 }]).controller('NewQuestionCtrl', ['$scope', '$http', '$state', 'toaster', function($scope, $http, $state, toaster) {
