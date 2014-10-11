@@ -15,7 +15,8 @@
 <div class="row top-padding">
   <div class="col-md-12">
     <div class="well well-sm">
-      <small>{{ question.created_at_from_now }} від {{ question.user.name }} | {{ question.views }} переглядів</small>
+      <small><span class="badge">{{ question.views }}</span> <i class="fa fa-eye"></i></small>
+      <small class="pull-right">{{ question.created_at_from_now }} від {{ question.user.name }}</small>
     </div>
   </div>
 </div>
