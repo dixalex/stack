@@ -2,7 +2,8 @@
   <div class="page-header" id="banner">
     <div class="row">
       <div class="col-lg-10 col-md-8 col-sm-6">
-        <h1>Stack.ck.ua</h1>
+        <h2 ng-hide="$state.current.name == 'app.questions'" class="hidden-xs">Задавай свої питання — допомогай іншим</h2>
+        <h2 ng-show="$state.current.name == 'app.questions'">Розвиваємо IT <span class="hidden-xs">в Черкасах</span></h2>
       </div>
       <div class="col-lg-2 col-md-4 col-sm-6">
         <div class="sponsor">
