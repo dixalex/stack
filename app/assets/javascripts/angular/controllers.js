@@ -5,6 +5,7 @@
 angular.module('app.controllers', ['ngCookies'])
   .controller('AppCtrl', ['$scope', '$window', '$http',
     function( $scope, $window, $http ) {
+
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

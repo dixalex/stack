@@ -38,3 +38,21 @@ a.title {
 .question-body {
     font-size: 13px;
 }
+.navbar > .container .navbar-brand {
+  background-color: #2b3e50;
+  background-image: image-url("stack_logo_header.png");
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  width: 40px;
+  margin-left: 0;
+}
+.navbar > .container .navbar-brand:hover {
+  background-image: image-url("stack_logo_big.png");
+  background-size: 152px 40px;
+  width: 152px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
