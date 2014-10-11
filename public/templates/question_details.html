@@ -39,7 +39,7 @@
         <div class="form-group">
           <label for="body" class="col-md-2 control-label" id="body-label">Детально</label>
           <div class="col-md-8">
-            <textarea ng-model="credentials.body" class="form-control" rows="4" id="body"></textarea>
+            <textarea ng-model="credentials.body" ng-change="checkCurrentUser()" class="form-control" rows="4" id="body"></textarea>
             <span class="help-block"></span>
           </div>
           <div class="col-md-2">
