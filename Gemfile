@@ -16,6 +16,8 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'font-awesome-sass'
 
+gem 'nokogiri', '~> 1.6.4' #for API parser
+
 gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets

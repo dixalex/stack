@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/auth/:provider/callback' => 'sessions#create'
 
+  get '/parse_video' => 'api#parse_video'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -43,9 +43,9 @@ app.controller('QuestionsCtrl', ['$scope', '$http', function($scope, $http) {
     authenticity_token: $scope.authenticity_token
   };
   $scope.checkCurrentUser = function() {
-    if (!$scope.currentUser) {
+//    if (!$scope.currentUser) {
       toaster.pop('info', '', 'Треба спочатку увійти до системи :)');
-    }
+//    }
   };
 }]).controller('NewQuestionCtrl', ['$scope', '$http', '$state', 'toaster', function($scope, $http, $state, toaster) {
   // validate current user, TODO: refactor this
