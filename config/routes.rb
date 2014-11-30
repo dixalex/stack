@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
 
   get '/parse_video' => 'api#parse_video'
+  get '/parse_data' => 'api#parse_data'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
