@@ -15,7 +15,7 @@ class User
       user.provider = auth['provider']
       user.uid = auth['uid']
       if auth['info']
-        user.name = auth['info']['name'] || ''
+        user.name = auth['info']['name'] || auth['info']['email'].split('@')[0] || 'anonymous'
         user.email = auth['info']['email'] || ''
       end
     end
